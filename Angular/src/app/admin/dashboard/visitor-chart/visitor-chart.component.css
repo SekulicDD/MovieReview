@@ -1,0 +1,11 @@
+#visitors{
+  width:70% !important;
+  padding-left:0;
+}
+
+#select {
+  padding: 5px;
+  margin: 10px 10px 15px 0;
+  background-color: transparent;
+  border: 1px solid black;
+}

@@ -1,0 +1,29 @@
+
+thead{
+  background-color: #40474e;
+  color:white !important;
+}
+tr{
+  font-size:15px;
+}
+
+p{
+  color:black;
+  float:left;
+  margin:10px;
+}
+
+#selectOrder{
+  margin-top:10px;
+  float:left;
+  padding:3px;
+}
+
+.searchInput{
+  margin-top:10px;
+  margin-left:20px;
+}
+
+.formsRow{
+  padding:40px;
+}

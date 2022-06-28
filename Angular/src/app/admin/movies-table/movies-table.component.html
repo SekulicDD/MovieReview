@@ -1,0 +1,52 @@
+<h1>Movies</h1>
+
+<p>Order by:</p>
+<select id="selectOrder" (change)="switchOrder($event)">
+  <option value="3">Name (A to Z)</option>
+  <option value="4">Name (Z to A)</option>
+  <option value="1">Rating (highest to lowest)</option>
+  <option value="2">Rating (lowest to highest)</option>
+</select>
+
+<input (keyup)="searchWord($event)" class="searchInput" type="text" value="" placeholder="Search...">
+
+<div *ngIf="movies$ | async as movies">
+<table class="table" *ngIf="total$ | async as total">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Title</th>
+    <th scope="col">Summary</th>
+    <th scope="col">Categories</th>
+    <th scope="col">Duration</th>
+    <th scope="col">Score</th>
+    <th scope="col">Release Date</th>
+    <th scope="col">Last_Modified</th>
+    <th scope="col">Operations</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr app-movie-row (editEvent)="getEditEventId($event)" *ngFor="let movie of movies | paginate:{itemsPerPage: itemPerPage, currentPage: page, totalItems:total}" [movie]="movie"></tr>
+  </tbody>
+</table>
+</div>
+
+<pagination-template #p="paginationApi" (pageChange)="getPage($event)">
+  <div class="col-lg-12">
+    <ul class="page-numbers">
+      <li  *ngFor="let pageN of p.pages" [class.current]="p.getCurrent() === pageN.value">
+        <a (click)="p.setCurrent(pageN.value)" *ngIf="p.getCurrent() !== pageN.value">{{ pageN.label }}</a>
+        <div class="activePg" *ngIf="p.getCurrent() === pageN.value">
+          <a >{{ pageN.label }}</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</pagination-template>
+
+<div class="row formsRow">
+  <app-insert-form [categories$]="categories$" class="col-md-6"></app-insert-form>
+  <app-edit-movie-form class="col-md-6"></app-edit-movie-form>
+</div>
+
+

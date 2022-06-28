@@ -1,0 +1,86 @@
+<section class="grid-system" id="moviesPage" *ngIf="movies">
+    <div class="row">
+      <div class="col-lg-8">
+          <div class="row">
+
+            <div class="col-lg-12" id="moviesListDiv">
+              <div class="row">
+                  <app-movie
+                    *ngFor="let item of movies
+                     |paginate:{itemsPerPage: itemPerPage, currentPage: page, totalItems:total} let i = index;"
+                     [item]="item"
+                    [alreadyFavorite]="alreadyFavourite[i]"
+                     [@fadeInOut]="page"
+                    class="col-lg-3 col-md-4 col-sm-6">
+                  </app-movie>
+              </div>
+            </div>
+
+            <pagination-template #p="paginationApi" (pageChange)="getPage($event)">
+              <div class="col-lg-12">
+                <ul class="page-numbers">
+                  <li  *ngFor="let pageN of p.pages" [class.current]="p.getCurrent() === pageN.value">
+                    <a (click)="p.setCurrent(pageN.value)" *ngIf="p.getCurrent() !== pageN.value">{{ pageN.label }}</a>
+                    <div class="activePg" *ngIf="p.getCurrent() === pageN.value">
+                      <a >{{ pageN.label }}</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </pagination-template>
+
+          </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <div class="row">
+
+            <div class="col-lg-12">
+              <div class="sidebar-item">
+                <div class="sidebar-heading">
+                  <h2>Search</h2>
+                </div>
+                <input (keyup)="searchWord($event)" class="customSearch" type="text" value="" placeholder="Search...">
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="sidebar-item tags">
+                <div class="sidebar-heading">
+                  <h2>Categories</h2>
+                </div>
+                <div class="content">
+                  <ul *ngIf="categories$ | async as categories">
+                   <li *ngFor="let cat of categories"><a [class.activeB]="filterCategories.includes(cat.id)" (click)="switchCategories(cat.id)">{{cat.name}}</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="sidebar-item categories">
+                <div class="sidebar-heading">
+                  <h2>Order by</h2>
+                </div>
+              <div class="row">
+                  <div class="col-lg-9 content customSelect">
+                    <select name="orderBy" (change)="switchOrder($event)">
+                      <option value="1">Rating (highest to lowest)</option>
+                      <option value="2">Rating (lowest to highest)</option>
+                      <option value="3">Name (A to Z)</option>
+                      <option value="4">Name (Z to A)</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+</section>

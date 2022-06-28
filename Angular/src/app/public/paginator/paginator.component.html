@@ -1,0 +1,12 @@
+<pagination-template *ngIf="itemPerPage<total" #p="paginationApi" (pageChange)="getPage($event)">
+  <div class="col-lg-12">
+    <ul class="page-numbers">
+      <li  *ngFor="let pageN of p.pages" [class.current]="p.getCurrent() === pageN.value">
+        <a (click)="p.setCurrent(pageN.value)" *ngIf="p.getCurrent() !== pageN.value">{{ pageN.label }}</a>
+        <div class="activePg"*ngIf="p.getCurrent() === pageN.value">
+          <a >{{ pageN.label }}</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</pagination-template>

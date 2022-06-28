@@ -1,0 +1,28 @@
+<div class="main-banner header-text">
+  <div class="container-fluid" *ngIf="movies$ | async as movies">
+    <div class="row" *ngIf="movies.length>0">
+      <div class="col-lg-7" id="movieBanner">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe  class="embed-responsive-item" [src]="movies[activeVideo].movie_properties.videoLoc+'?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;iv_load_policy=3' | safeUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <button id="browseMore" class="btn btn-outline-danger">Browse more top rated movies</button>
+      </div>
+      <div class="col-lg-5" id="topMovies">
+        <h4>Top rated movies of all time</h4>
+        <ul>
+          <li *ngFor="let movie of movies;let i = index" (click)=setActive(i)  [@activeDisabled]="i == activeVideo" [ngClass]="i == activeVideo ? 'activeMovieTab':'disabledMovieTab'">
+            <div class="img-container">
+              <img src="{{movie.movie_properties.imageLoc}}" alt="">
+            </div>
+            <h6>{{movie.title}}</h6><br>
+            <p>Duration: {{movie.duration}}m</p>
+            <p>Release date: {{movie.releaseDate | date:"dd-MMM-y"}}</p>
+            <p>Score: {{movie.score}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,45 @@
+#adminSidebar{
+  background: #434A51;
+  background: -moz-linear-gradient(top, #434A51 0%, #343A40 100%);
+  background: -webkit-linear-gradient(top, #434A51 0%, #343A40 100%);
+  background: linear-gradient(to bottom, #434A51 0%, #343A40 100%);
+  height:100%;
+  position: fixed;
+  width:15%;
+  padding:25px;
+  text-align: center;
+  color:#b6bcc4;
+  -webkit-box-shadow: 5px 0px 3px 0px rgba(0,0,0,0.31);
+  box-shadow: 5px 0px 3px 0px rgba(0,0,0,0.31);
+  font-family: 'Noto Sans', sans-serif;
+}
+
+#menu{
+  margin-top:20px;
+  text-align: left;
+}
+
+#menu li{
+  margin-bottom:12px;
+}
+
+#menu a{
+  color:#b6bcc4;
+  font-size:20px;
+}
+
+.submenu{
+  padding-left: 10px;
+
+}
+
+.submenu li{
+  margin-bottom:5px !important;
+}
+
+.submenu a{
+  font-size:17px !important;
+}
+
+
+

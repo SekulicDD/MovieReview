@@ -1,0 +1,15 @@
+
+<div class="row" id="movieCarousel">
+  <div class="col-lg-1 col-md-1 col-sm-1 carouselNav" (click)="moveLeft()"><i class="fa-solid fa-angle-left"></i></div>
+
+  <app-movie
+    [@fadeIn] *ngFor="let movie of carouselItems;let i=index;"
+     [item]="movie"
+     [showFav]="false"
+    class="col-lg-2 col-md-2 col-sm-2">
+  </app-movie>
+
+  <div class="col-lg-1 col-md-1 col-sm-1 carouselNav" (click)="moveRight()"><i class="fa-solid fa-angle-right"></i></div>
+</div>
+
+

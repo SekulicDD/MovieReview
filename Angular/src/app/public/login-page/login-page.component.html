@@ -1,0 +1,96 @@
+
+<section class="contact-us" id="loginPage">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="down-contact">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="sidebar-item contact-form">
+                <div class="sidebar-heading">
+                  <h2>Sign In</h2>
+                </div>
+                <div class="content">
+                  <form id="contact" action="" method="post" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12">
+                        <fieldset>
+                          <input name="email" type="text" id="email" placeholder="Email" ngModel required>
+                        </fieldset>
+                      </div>
+                      <div class="col-md-12 col-sm-12">
+                        <fieldset>
+                          <input name="password" type="password" id="subject" placeholder="Password" ngModel required>
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <button type="submit" id="form-submit" class="main-button">Sign In</button>
+                        </fieldset>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="float-left">
+                    <a routerLink="/reset-password">Reset Password</a>
+                  </div>
+                  <div class="errors" *ngIf="errorsLogin != undefined">
+                    <p *ngFor="let error of errorsLogin.email">{{error}}</p>
+                    <p *ngFor="let error of errorsLogin.password">{{error}}</p>
+                    <p *ngIf="errorsLogin.error !=undefined">{{errorsLogin.error}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="sidebar-item contact-form">
+                <div class="sidebar-heading">
+                  <h2>Register</h2>
+                </div>
+                <div class="content">
+                  <form action="" method="post" #regForm="ngForm" (ngSubmit)="register(regForm)">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12">
+                        <fieldset>
+                          <input name="name" type="text"  ngModel placeholder="Name" required>
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6 col-sm-12">
+                        <fieldset>
+                          <input name="email" type="text"  ngModel placeholder="Email" required>
+                        </fieldset>
+                      </div>
+                      <div class="col-md-12 col-sm-12">
+                        <fieldset>
+                          <input name="password" type="password"  ngModel placeholder="Password" required>
+                        </fieldset>
+                      </div>
+                      <div class="col-md-12 col-sm-12">
+                        <fieldset>
+                          <input name="password_confirmation" type="password"  ngModel placeholder="Confirm password" required>
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <button type="submit"  class="main-button">Register</button>
+                        </fieldset>
+                      </div>
+                    </div>
+                  </form>
+                  <div  class="success" *ngIf="success != undefined">
+                    <p>{{success.message}}</p>
+                  </div>
+                  <div class="errors" *ngIf="errorsRegister != undefined">
+                    <p *ngFor="let error of errorsRegister.name">{{error}}</p>
+                    <p *ngFor="let error of errorsRegister.email">{{error}}</p>
+                    <p *ngFor="let error of errorsRegister.password">{{error}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="error-toast"></div>
+    </div>
+</section>

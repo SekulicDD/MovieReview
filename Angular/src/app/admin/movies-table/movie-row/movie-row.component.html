@@ -1,0 +1,14 @@
+
+<th scope="row">{{movie.id}}</th>
+<td>{{movie.title}}</td>
+<td>{{movie.title}}</td>
+<td>{{categories}}</td>
+<td>{{movie.duration}}m</td>
+<td *ngIf="movie.score">{{movie.score}}</td>
+<td *ngIf="!movie.score">No reviews</td>
+<td>{{movie.releaseDate}}</td>
+<td *ngIf="movie.updated_at">{{movie.updated_at | date}}</td>
+<td *ngIf="!movie.updated_at">Not modified</td>
+<td class="table-icons"><i (click)="editEventEmit(movie.id)" class="fa-solid fa-file-pen"></i> <i class="fa-solid fa-trash"></i></td>
+
+

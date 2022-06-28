@@ -1,0 +1,15 @@
+<div class="col-lg-12" id="visitors">
+  <select id="select" [(ngModel)]="selectedValue" (change)="setChartData()">
+    <option selected="selected" value="7">Last 7 days</option>
+    <option value="30">Last 30 days</option>
+  </select>
+  <canvas class="col-lg-12 " baseChart
+          [datasets]="chartData"
+          [labels]="lineChartLabels"
+          [legend]="lineChartLegend"
+          [type]="type"
+          [options]="options"
+  >
+  </canvas>
+</div>
+

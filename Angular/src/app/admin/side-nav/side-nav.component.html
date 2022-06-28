@@ -1,0 +1,31 @@
+
+<div id="adminSidebar">
+  <h3>Admin Panel</h3>
+  <ul id="menu">
+    <li>
+      <a href="#"><i class="fa-solid fa-house"></i> Dashboard</a>
+    </li>
+    <li>
+      <a (click)="movieSub=!movieSub" ><i class="fa-solid fa-table-list"></i> Movies
+        <i *ngIf="movieSub"class="fa-solid fa-caret-down"></i>
+        <i *ngIf="!movieSub"class="fa-solid fa-caret-up"></i>
+      </a>
+      <ul [@slideInOut] class="submenu" *ngIf="movieSub">
+        <li><a href="#">View</a></li>
+        <li><a href="#">Update</a></li>
+        <li><a href="#">Insert</a></li>
+      </ul>
+    </li>
+    <li>
+      <a (click)="categoriesSub=!categoriesSub" ><i class="fa-solid fa-table-list"></i> Categories
+        <i *ngIf="categoriesSub"class="fa-solid fa-caret-down"></i>
+        <i *ngIf="!categoriesSub"class="fa-solid fa-caret-up"></i>
+      </a>
+      <ul [@slideInOut] class="submenu" *ngIf="categoriesSub">
+        <li><a href="#">View</a></li>
+        <li><a href="#">Update</a></li>
+        <li><a href="#">Insert</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,39 @@
+<section class="blog-posts grid-system" id="profilePage">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="all-blog-posts">
+            <div id="profileDiv">
+                <img src="assets/images/banner-item-01.jpg" alt="">
+              <div>
+                <a href="post-details.html"><h4>{{user?.name}}</h4></a>
+                <ul class="">
+                  <li>Email: {{user?.email}}</li>
+                  <li>Joined: {{user?.created_at | date: "d-MMM-yyy"}}</li>
+                  <li>Reviews: {{totalRev$ | async}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          <div class="sidebar">
+            <div  class="row">
+              <div class="col-lg-12">
+                <div id="profieNavbar" class=" tags">
+                  <div class="content">
+                    <ul>
+                      <li><a [class.activeB]="favTabActive" (click)="changeActiveTab(1)" >Favourites</a></li>
+                      <li><a [class.activeB]="revTabActive" (click)="changeActiveTab(2)" >Reviews</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+             <app-profile-favourite-movies class="col-lg-12" *ngIf="favTabActive" [id]="id" [authUserId]="authUserId"></app-profile-favourite-movies>
+              <app-profile-reviews class="col-lg-12" *ngIf="revTabActive" [id]="id" [authUserId]="authUserId"></app-profile-reviews>
+
+              </div>
+            </div>
+          </div>
+        </div>
+</section>

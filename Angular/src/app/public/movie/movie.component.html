@@ -1,0 +1,24 @@
+<div class="movieDiv">
+  <div class="imageContainer">
+    <img src="{{item.movie_properties.imageLoc}}" alt=""/>
+    <div class="hoverMovie">
+      <p class="view" routerLink="/movie/{{item.id}}">View</p>
+      <p>
+        <span *ngIf="userId!=0 && showFav">
+          <span *ngIf="alreadyFavorite">
+             <i (click)="removeFromFavourites()" class="fa fa-heart"></i>
+          </span>
+          <span *ngIf="!alreadyFavorite">
+             <i (click)="addToFavourites()" class="fa-regular fa-heart"></i>
+          </span>
+        </span>
+      </p>
+    </div>
+  </div>
+  <h6 class="titleP">{{item.title}}</h6>
+  <p  class="p">{{item.releaseDate | date:'MMM d, y'}}</p>
+  <div class="movieScore">
+    <p *ngIf="item.score!=undefined">{{item.score}} <img src="../../../assets/images/starFull.png" alt=""/></p>
+    <p *ngIf="item.score==undefined">no reviews</p>
+  </div>
+</div>
